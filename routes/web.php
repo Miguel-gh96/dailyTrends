@@ -11,6 +11,5 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// NAVIGATION
+Route::get('/', 'HomeController@run');

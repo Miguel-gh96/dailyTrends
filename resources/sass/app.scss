@@ -1,6 +1,6 @@
 
 // Fonts
-@import url('https://fonts.googleapis.com/css?family=Nunito');
+@import url('https://fonts.googleapis.com/css?family=Montserrat:500,700,800,900'); 
 
 // Variables
 @import 'variables';
@@ -8,7 +8,27 @@
 // Bootstrap
 @import '~bootstrap/scss/bootstrap';
 
-.navbar-laravel {
-  background-color: #fff;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);
+@import '~bulma/css/bulma.min.css';
+
+* {
+  font-family: $font-family-sans-serif;
+  color: $company-colour2;
+}
+
+header {
+  .logo {
+    display: flex;
+    label {    
+      font-weight: 900;
+      font-size: 26px;
+      padding: .2rem 1.5rem;
+      &:nth-child(1) {
+        background: $company-colour;
+      }
+      &:nth-child(2) {
+        background: $company-colour2;
+        color: white;
+      }
+    }
+  } 
 }
