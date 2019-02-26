@@ -12,4 +12,4 @@
 */
 
 // NAVIGATION
-Route::get('/', 'HomeController@run');
+Route::get('/', 'HomeController@index');

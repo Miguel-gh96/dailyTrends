@@ -10679,3 +10679,29 @@ header .logo label:nth-child(2) {
   color: white;
 }
 
+section.home {
+  text-align: center;
+}
+
+section.home .custom_column {
+  display: inline-grid;
+  flex-basis: 0;
+  flex-grow: 1;
+  flex-shrink: 1;
+  padding: 0.75rem;
+  width: 33%;
+  height: 436px;
+}
+
+@media (max-width: 1024px) {
+  section.home .custom_column {
+    width: 49%;
+  }
+}
+
+@media (max-width: 768px) {
+  section.home .custom_column {
+    width: 100%;
+  }
+}
+

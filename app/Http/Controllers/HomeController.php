@@ -3,12 +3,27 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Services\FeedService;
 use App\Feed;
-use Goutte\Client;
 
 class HomeController extends Controller
 {
-    function run(){
-        return view('home');
+    function index  (FeedService $feedInstance){
+
+        // TODO: add waiting time
+        $feedInstance->loadDefaultSourceFeeds();                    
+
+
+        // GET  the last five news from the newspapers "El País" and "El mundo"
+        $feed = new Feed();
+        $featuredFeeds = $feed
+                            ->where('source', 'ILIKE', '%elmundo%')
+                            ->orWhere('source', 'ILIKE', '%elpais%')
+                            ->orderBy('created_at')->get();
+
+        // TODO: Not implemented yet
+        $feeds = [];
+
+        return view('home', ['featuredFeeds' => $featuredFeeds,'feeds' => $feeds]);
     }
 }
