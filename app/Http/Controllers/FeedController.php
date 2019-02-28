@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
+use App\Http\Resources\FeedCollection;
+use App\Feed;
+
 class FeedController extends Controller
 {
     /**
@@ -13,7 +16,7 @@ class FeedController extends Controller
      */
     public function index()
     {
-        //
+        return new FeedCollection(Feed::all());
     }
 
     /**
@@ -23,7 +26,7 @@ class FeedController extends Controller
      */
     public function create()
     {
-        //
+        
     }
 
     /**
@@ -34,7 +37,17 @@ class FeedController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $feed = new Feed([
+            'title' => $request->get('title'),  
+            'publisher' => $request->get('publisher'),          
+            'source' => $request->get('source'),            
+            'image' => $request->get('image'),
+            'body' => $request->get('body')
+        ]);
+    
+        $feed->save();
+    
+        return response()->json('success');
     }
 
     /**
@@ -55,8 +68,9 @@ class FeedController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
-    {
-        //
+    {   
+        $feed = Feed::find($id);        
+        return response()->json($feed);
     }
 
     /**
@@ -68,7 +82,9 @@ class FeedController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $feed = Feed::find($id);
+        $feed->update($request->all());
+        return response()->json('successfully updated');
     }
 
     /**
@@ -79,6 +95,8 @@ class FeedController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $feed = Feed::find($id);
+        $feed->delete();
+        return response()->json('successfully deleted');
     }
 }

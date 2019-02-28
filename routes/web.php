@@ -14,3 +14,9 @@
 // NAVIGATION
 Route::get('/', 'HomeController@index');
 Route::get('/feed/{id}/{title}', 'HomeController@show');
+
+// vue app
+Route::get('/dashboard', function () { return view('dashboard'); });
+Route::get('/dashboard/{any}', function () {
+    return view('dashboard');
+})->where('any', '.*');
