@@ -19,7 +19,8 @@ class HomeController extends Controller
         $featuredFeeds = $feed
                             ->where('source', 'ILIKE', '%elmundo%')
                             ->orWhere('source', 'ILIKE', '%elpais%')
-                            ->orderBy('created_at')->get();
+                            ->orderBy('created_at', 'desc')->get()
+                            ->take(10);
 
         // TODO: Not implemented yet
         $feeds = [];

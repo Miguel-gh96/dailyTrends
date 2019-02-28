@@ -95,13 +95,19 @@ class FeedService
           $body = implode('', $body); 
                   
           // save data
-          $feed = new Feed;
-          if (count($title)) $feed->title = trim($title[0]);
-          if ($image) $feed->image = $image;
-          if ($publisher) $feed->publisher = trim($publisher[0]);
-          if ($body) $feed->body = $body;
-          if ($source) $feed->source = $source;
-          $feed->save();            
+          try{
+            $feed = new Feed;
+            if (count($title)) $feed->title = trim($title[0]);
+            if ($image) $feed->image = $image;
+            if ($publisher) $feed->publisher = trim($publisher[0]);
+            if ($body) $feed->body = $body;
+            if ($source) $feed->source = $source;
+            $feed->save();                  
+         }
+         catch(\Exception $e){
+            // do task when error
+            // echo $e->getMessage();   // insert query
+         }          
       }
 
     return true;
