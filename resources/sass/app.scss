@@ -15,22 +15,34 @@
   color: $company-colour2;
 }
 
+a {
+  text-decoration: none!important;
+}
+
 header {
-  .logo {
-    display: flex;
-    label {    
-      font-weight: 900;
-      font-size: 26px;
-      padding: .2rem 1.5rem;
-      &:nth-child(1) {
-        background: $company-colour;
-      }
-      &:nth-child(2) {
-        background: $company-colour2;
-        color: white;
+  .navbar {
+    box-shadow: 1px -5px 16px #212529;
+    .logo {
+      display: flex;
+      label {    
+        font-weight: 900;
+        font-size: 26px;
+        padding: .2rem 1.5rem;
+        &:nth-child(1) {
+          background: $company-colour;
+        }
+        &:nth-child(2) {
+          background: $company-colour2;
+          color: white;
+        }
       }
     }
-  } 
+  }   
+}
+
+section {
+  padding-top: 71.32px!important;
 }
 
 @import 'home.scss';
+@import 'detailFeed.scss';

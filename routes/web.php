@@ -13,3 +13,4 @@
 
 // NAVIGATION
 Route::get('/', 'HomeController@index');
+Route::get('/feed/{id}/{title}', 'HomeController@show');
